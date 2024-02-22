@@ -2,7 +2,7 @@
 
 Görev Yönetimi demo projesi, [Laravel](https://laravel.com/) altyapısını ve [Laravel Sanctum](https://laravel.com/docs/10.x/sanctum) paketini kullanarak görev yönetimi için gerekli bazı API endpointleri sağlar. Bunlar:
 
-- Görevleri listeleme
+- Görevleri isteğe bağlı filtreleri kullanarak listeleme
 - Görev görüntüleme
 - Görev güncelleme
 - Görev silme
