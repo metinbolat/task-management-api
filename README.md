@@ -20,36 +20,22 @@ Aşağıdaki adımları takip ederek projeyi yerel makinenize klonlayabilir ve k
     
     cd task-management-api
     ```
-   Eğer `.env` dosyasında veritabanı ayarları gibi değişiklikler yapmanız gerekmiyorsa
-   aşağıdaki `Artisan` komutunu kullanabilirsiniz:
-
-    ```bash
-    php artisan project:install
-    ```
-
-Bu komut, şu işlemleri sırasıyla gerçekleştirir:
-
-- Composer yükler
-- `.env.example` dosyasını `.env` ismiyle kopyalar
-- `.env` dosyasında `APP_KEY` değeri oluşturur.
-- Veritabanı kurulumlarını gerçekleştirir
-- Test amaçlı olarak veritabanı tablolarına sahte kullanıcı ve görev verisi yazar
-
-Eğer özelleştirmeniz gereken noktalar varsa, aşağıdaki adımları izleyebilirsiniz:
-
 2. Bağımlılıkları yükleme:
-    ```bash
-    composer install
-    ```
+   ```bash
+   composer install
+   ```
 
-3. `.env` dosyasını ayarlayın:
+3. `.env` dosyasını ayarlama:
    `.env.example` dosyasını `.env` olarak kopyalayın ve veritabanı ayarlarınızı yapın.
 
 4. Uygulama anahtar kodu oluşturma:
     ```bash
     php artisan key:generate
     ```
-
+5. Veritabanı kurulumlarını tamamlama ve tablolara sahte veri yazma:
+    ```bash
+    php artisan migrate --seed
+    ```
 Bir kullanıcıya görev atandığında e-posta gönderilmesini sağlamak için gerekli `Mailer` kurulumlarını
 tamamlamanız yeterli olacaktır.
 
