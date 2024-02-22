@@ -32,8 +32,9 @@ class UpdateTaskRequest extends FormRequest
                 'title' => 'required|string|max:255',
                 'body' => 'required|string|min:10',
                 'status' => ['required','string', Rule::in(['Tamamlandı', 'Devam ediyor'])],
-                'assigned_date' => 'required',
-                'due_date' => 'required',
+                'assigned_date' => 'required|date_format:Y-m-d',
+                'due_date' => 'required|date_format:Y-m-d|after:assigned_date',
+                'completed_date' => 'nullable|date_format:Y-m-d|after:assigned_date',
                 'user_ids' => 'nullable|array',
                 'user_ids.*' => 'exists:users,id',
             ];
@@ -42,11 +43,11 @@ class UpdateTaskRequest extends FormRequest
                 'title' => 'sometimes|required|string|max:255',
                 'body' => 'sometimes|required|string|min:10',
                 'status' => ['sometimes','required','string', Rule::in(['Tamamlandı', 'Devam ediyor'])],
-                'assigned_date' => 'sometimes|required',
-                'due_date' => 'sometimes|required',
+                'assigned_date' => 'sometimes|required|date_format:Y-m-d',
+                'due_date' => 'sometimes|required|date_format:Y-m-d',
+                'completed_date' => 'sometimes|required||date_format:Y-m-d',
                 'user_ids' => 'nullable|array',
                 'user_ids.*' => 'sometimes|required|exists:users,id',
-                'completed_date' => 'sometimes|required',
             ];
         }
     }

@@ -26,8 +26,9 @@ class StoreTaskRequest extends FormRequest
             'title' => 'required|string|max:255',
             'body' => 'required|string|min:10',
             'status' => ['required','string', Rule::in(['Tamamlandı', 'Devam ediyor'])],
-            'assigned_date' => 'required',
-            'due_date' => 'required',
+            'assigned_date' => 'required|date_format:Y-m-d',
+            'due_date' => 'required|date_format:Y-m-d',
+            'completed_date' => 'nullable|date_format:Y-m-d',
             'user_id' => 'exists:users,ids'
         ];
     }

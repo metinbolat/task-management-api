@@ -24,9 +24,9 @@ class UserController extends Controller
         $filter = new UsersFilter();
         $queryItems = $filter->transform($request);
 
-        $tasks = $request->query('include_tasks');
+        $includeTasks = $request->has('include_tasks');
         $users = User::where($queryItems);
-        if ($tasks) {
+        if ($includeTasks) {
             $users = $users->with('tasks');
         }
 
